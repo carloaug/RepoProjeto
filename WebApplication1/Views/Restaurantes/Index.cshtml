@@ -1,0 +1,81 @@
+﻿
+@model IEnumerable<RSistema.Models.Restaurante>
+@{
+
+    ViewBag.Title = "Pesquisa";
+}
+
+<h2>RESTAURANTES</h2>
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-group">
+        <div class="col-md-offset-0 col-md-10">
+
+            <br />
+            <fieldset>
+                <legend>Filtros</legend>
+                <div class="col-md-offset-4 col-md-10">
+                    <h2>Digite o nome</h2>
+
+                    <p> <input type="text" name="texto" id="texto" placeholder="" size="300" /> </p>
+
+                    <br />
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search">&nbsp;Pesquisar </span></button>
+                    <a class="btn btn-success" href="@Url.Action("Create", "Restaurantes")"><span class="glyphicon glyphicon-plus">&nbsp;Cadastrar novo restaurante </span></a>
+
+
+                </div>
+            </fieldset>
+
+            <br />
+
+        </div>
+
+    </div>
+
+    <br />
+
+    <br />
+
+
+    <fieldset>
+        <table class="table">
+
+
+            @if (Model.Count() == 0)
+            {
+                <tr style="color:red"><td>Não foram encontrados registros com esse critério, tente novamente !</td></tr>
+            }
+            else
+            {
+                <tr>
+                    <th align="center">@Html.DisplayNameFor(model => model.RestauranteNome)</th>
+                    <th>Alterar</th>
+                    <th>Excluir</th>
+                </tr>
+
+                foreach (var item in Model)
+                {
+
+
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.RestauranteNome)</td>
+                        <td>
+                            <a class="btn btn-primary-outline" style="font-size:20px;color:blue;" href="@Url.Action("Edit", "Restaurantes", new { id = item.RestauranteId })"><span class="glyphicon glyphicon-pencil">&nbsp;</span></a>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary-outline" style="font-size:20px;color:red" href="@Url.Action("Delete", "Restaurantes", new { id = item.RestauranteId })"><span class="glyphicon glyphicon-minus red">&nbsp;</span></a>
+                        </td>
+                    </tr>
+
+                }
+
+            }
+
+
+        </table>
+
+    </fieldset>
+}

@@ -1,0 +1,49 @@
+﻿@model RSistema.Models.Restaurante
+@{
+    ViewBag.Title = "Editar ";
+}
+
+<h2>CADASTRO DE RESTAURANTE</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>Dados</legend>
+        <div class="form-horizontal">
+
+            @Html.HiddenFor(m => m.RestauranteId)
+
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.RestauranteNome, new { @class = "control-label col-md-0" })
+
+                <div class="col-md-10">
+
+                    @Html.TextBoxFor(m => m.RestauranteNome, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RestauranteNome, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-0 col-md-10">
+
+                    <br />
+
+                    <a href="@Url.Action("Index", "Restaurantes")" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                        Cancelar
+                    </a>
+
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk">&nbsp;Salvar Alterações </span></button>
+
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

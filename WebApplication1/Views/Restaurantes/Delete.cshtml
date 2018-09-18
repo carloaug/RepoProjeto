@@ -1,0 +1,40 @@
+﻿@model RSistema.Models.Restaurante
+@{
+    ViewBag.Title = "Deletar";
+}
+<h2>CADASTRO DE RESTAURANTE</h2>
+<fieldset>
+    <legend>Dados</legend>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(m => m.RestauranteNome, new { @class = "control-label col-md-0" })
+
+            <div class="col-md-10">
+
+                @Html.TextBoxFor(m => m.RestauranteNome,
+                                          new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <div class="col-md-offset-0 col-md-10">
+
+                    <br />
+                    <a href="@Url.Action("Index", "Restaurantes")" class="btn btn-danger">
+
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                        Cancelar
+                    </a>
+
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk">&nbsp;Excluir Restaurante </span></button>
+
+
+                </div>
+            </div>
+        }
+    </div>
+</fieldset>

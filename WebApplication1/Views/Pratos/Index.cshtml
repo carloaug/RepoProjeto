@@ -1,0 +1,51 @@
+﻿@model IEnumerable<RSistema.Models.Prato>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>PRATOS</h2>
+<br />
+<p>
+
+    <a class="btn btn-success" href="@Url.Action("Create", "Pratos")"><span class="glyphicon glyphicon-plus">&nbsp;Cadastrar novo Prato </span></a>
+
+</p>
+
+<br />
+<fieldset>
+    <table class="table">
+
+        @if (Model.Count() == 0)
+        {
+            <tr style="color:red"><td>Não existem pratos cadastrados !</td></tr>
+        }
+        else
+        {
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Restaurante.RestauranteNome)</th>
+                <th>@Html.DisplayNameFor(model => model.PratoNome) </th>
+
+                <th>@Html.DisplayNameFor(model => model.PratoPreco)</th>
+                <th>Alterar</th>
+                <th>Excluir</th>
+            </tr>
+
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Restaurante.RestauranteNome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PratoNome)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.PratoPreco)</td>
+                    <td>
+
+                        <a class="btn btn-primary-outline" style="font-size:20px;color:blue;" href="@Url.Action("Edit", "Pratos", new { id = item.PratoId })"><span class="glyphicon glyphicon-pencil">&nbsp;</span></a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary-outline" style="font-size:20px;color:red" href="@Url.Action("Delete", "Pratos", new { id = item.PratoId })"><span class="glyphicon glyphicon-minus red">&nbsp;</span></a>
+                </tr>
+
+            }
+        }
+
+    </table>
+</fieldset>

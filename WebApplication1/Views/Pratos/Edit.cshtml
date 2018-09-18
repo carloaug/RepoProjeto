@@ -1,0 +1,64 @@
+﻿@model RSistema.Models.Prato
+@{
+    ViewBag.Title = "Editar Prato";
+}
+
+<h2>CADASTRO DE  PRATOS</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>Dados</legend>
+        <div class="form-horizontal">
+
+            @Html.HiddenFor(m => m.PratoId)
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PratoNome, new { @class = "control-label col-md-0" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.PratoNome, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PratoNome, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PratoPreco, htmlAttributes: new { @class = "control-label col-md-0" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.PratoPreco, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PratoPreco, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Restaurante.RestauranteNome, new { @class = "control-label col-md-0" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.RestauranteId,
+                                      new SelectList(ViewBag.Restaurantes, "RestauranteId",  "RestauranteNome"),
+                                     "Escolha o Restaurante", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RestauranteId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-0 col-md-10">
+
+
+                    <br />
+                    <a href="@Url.Action("Index", "Pratos")" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                        Cancelar
+                    </a>
+
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk">&nbsp;Salvar Alterações </span></button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

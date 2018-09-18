@@ -1,0 +1,51 @@
+﻿@model RSistema.Models.Prato
+@{
+    ViewBag.Title = "Deletar";
+}
+<h2>CADASTRO DE PRATOS</h2>
+
+<fieldset>
+    <legend>Dados</legend>
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Restaurante.RestauranteNome, new { @class = "control-label col-md-0" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.RestauranteId, ((String)ViewBag.Restaurante),
+                              new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.PratoNome, new { @class = "control-label col-md-0" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.PratoNome,
+                                          new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.PratoPreco, new { @class = "control-label col-md-0" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.PratoPreco,
+                              new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <div class="col-md-offset-0 col-md-10">
+                    <br />
+                    <a href="@Url.Action("Index", "Pratos")" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                        Cancelar
+                    </a>
+
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk">&nbsp;Excluir Prato </span></button>
+                </div>
+            </div>
+        }
+
+    </div>
+</fieldset>
