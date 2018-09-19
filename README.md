@@ -4,6 +4,6 @@
 
 # RepoProjeto
 
-Projeto de um sistema de restaurantes 
+Projeto de um sistema de restaurantes desenvolvido em ASP.NET MVC
 
 
