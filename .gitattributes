@@ -13,7 +13,7 @@
 #*.cs     diff=csharp
 
 * linguist-language=csharp
-* linguist-language=js
+
 
 
 
